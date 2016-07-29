@@ -1,4 +1,3 @@
-%ѧϰPCA�任
 clear all;clc
 load train_set5000
 load Weights3000
