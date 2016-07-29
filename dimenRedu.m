@@ -1,4 +1,3 @@
-%对测试集进行PCA+LDA降维
 clear all;clc
 load test_fg
 load ldaMapping
@@ -30,4 +29,3 @@ gallery=bsxfun(@minus,gallery,lda_mapping.mean)*lda_mapping.M;
 
 save features probe gallery 
 save test_labels test_label age_source_label age_target_label
-
