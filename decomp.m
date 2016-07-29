@@ -1,11 +1,27 @@
-%2.decompose
+%{
+Copyright (C) 2015 University of Electronic Science and Technology of China
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}
+% main 
 clear all;clc;
-load('./data/train_set_alb2')
-%% training data
+%load your traing data here
+load('')
+%% Normalize
 x1 = train_source_alb2(:,1:end-2)/255;
 x2 = train_target_alb2(:,1:end-2)/255;
 
-%Normalize the data
 x1_mean = mean(x1,1);
 x1 = (x1 - repmat(x1_mean,size(x1,1),1));
 
@@ -139,7 +155,6 @@ for j=1:maxEpoch
     end
 
 for l=1:opts.numbatches
-    %以每个迷你块作为一次交叉迭代输入
     batch_x1 = x1(kk((l - 1) * opts.batchsize + 1 : l * opts.batchsize), :);
     batch_x2 = x2(kk((l - 1) * opts.batchsize + 1 : l * opts.batchsize), :);
     
@@ -938,23 +953,3 @@ H1=nn.H1;H2=nn.H2;
 Q1=nn.Q1;Q2=nn.Q2;
 BN1=nn.BN1;BN2=nn.BN2;
 save Weights K1 P1 K2 P2 BI1 BI2 BA1 BA2 BO1 BO2 H1 H2 B1 B2 Q1 Q2 BN1 BN2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
